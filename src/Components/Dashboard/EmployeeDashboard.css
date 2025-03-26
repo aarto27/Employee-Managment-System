@@ -1,0 +1,106 @@
+.EmployeeDB {
+    background-color: #1C1C1C;
+    height: 100vh;
+}
+
+.Header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    color: white;
+    font-size: large;
+    width: 88%;
+    margin: 0 auto;
+}
+
+.Logout-Btn {
+    background-color: #ff000092;
+    color: white;
+    height: 50px;
+    width: 100px;
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.Logout-Btn:hover {
+    background-color: #ff0000;
+}
+
+.Username {
+    font-size: xxx-large;
+}
+
+/* CSS For TaskListNumber*/
+
+.TaskListNumber {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 10px;
+    color: white;
+    margin-top: 50px;
+    font-size: large;
+    margin-bottom: 40px;
+}
+
+.TLN-Item {
+    padding: 20px;
+    border-radius: 15px;
+    color: white;
+    width: 300px;
+    height: 100px;
+}
+
+.TLN-Item h2,
+h3 {
+    font-size: 34px;
+    font-weight: 800;
+}
+
+/* CSS For TaskList */
+
+.TaskList {
+    padding: 20px;
+    border-radius: 15px;
+    margin: auto;
+    width: 86%;
+    height: 500px;
+    display: flex;
+    gap: 20px;
+    overflow-x: auto; 
+    flex-wrap: nowrap; 
+}
+
+.TaskList-Item {
+    flex: 1; 
+    min-width: 300px; 
+    max-width: 350px; 
+    padding: 20px;
+    border-radius: 15px;
+    background-color: #ff7e7e;
+    height: 350px;
+    color: white;
+}
+
+.TaskList-Item h2{
+    margin-bottom:20px ;
+}
+
+.TaskList-Header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.TaskList-Header h3{
+    font-size: 18px;
+    font-weight: 300;
+    background-color: #ff0000;
+    border-radius: 20px;
+    padding: 10px;
+}
