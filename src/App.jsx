@@ -10,13 +10,21 @@ function App() {
   // useEffect(() => {
   //   setLocalStorage()
   // },)
-  const [user, setUser] = useState();
+  const [user, setUser] = useState(null);
+  const [loggedInUser, setLoggedInUser] = useState(null);
 
   const handleLogin = (email, password) => {
-    if (email == "sanchit@singh.com" && password == "123") {
+    if (data && data.admin.find((e)=>{
+       e.email == email && e.password == password
+    })) {
       setUser("admin");
-    } else if (email == "nikita@sharma.com" && password == "123") {
+      localStorage.setItem('loggedInUser',JSON.stringify({role:'admin'}))
+    } else if (data) {
+      const employee = data.employee.find((e)=>{e.email == email && e.password == password})
+      if(employee){
       setUser("employee");
+      setLoggedInUser(employee)
+      localStorage.setItem('loggedInUser',JSON.stringify({role:'employee'}))
     }
   };
 
@@ -34,6 +42,7 @@ function App() {
       )}
     </>
   );
+}
 }
 
 export default App;
