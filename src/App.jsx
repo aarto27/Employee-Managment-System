@@ -20,7 +20,7 @@ function App() {
     }
   };
 
-  const data = useContext(AuthProvider)
+  const data = useContext(AuthProvider);
  
 
   return (
