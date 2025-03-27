@@ -11,7 +11,11 @@ function App() {
   //   setLocalStorage()
   // },)
 
-  const [user, setUser] = useState(null);
+ const [user, setUser] = useState(() => {
+  const savedUser = localStorage.getItem("loggedInUser");
+  return savedUser ? JSON.parse(savedUser).role : null;
+});
+
   const [loggedInUser, setLoggedInUser] = useState(null);
 
   const handleLogin = (email, password) => {
@@ -20,20 +24,20 @@ function App() {
         (e) => e.email === email && e.password === password
       );
       if (admin) {
-        setUser("admin");
         localStorage.setItem("loggedInUser", JSON.stringify({ role: "admin" }));
+        setUser("admin");
         return;
       }
       const employee = data.employee.find(
         (e) => e.email === email && e.password === password
       );
       if (employee) {
-        setUser("employee");
         setLoggedInUser(employee);
         localStorage.setItem(
           "loggedInUser",
           JSON.stringify({ role: "employee" })
-        );
+          );
+          setUser("employee");
         return;
       }
     }
@@ -45,7 +49,7 @@ function App() {
     <>
       {!user ? (
         <Login handleLogin={handleLogin} />
-      ) : user === "admin" ? (
+      ) : user == "admin" ? (
         <AdminDashboard />
       ) : (
         <EmployeeDashboard />

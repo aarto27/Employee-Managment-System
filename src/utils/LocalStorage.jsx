@@ -3,6 +3,7 @@ const employees = [
     id: 1,
     email: "nikita@sharma.com",
     password: "123",
+    username: "nikita",
     tasks: [
       {
         active: true,
@@ -30,6 +31,7 @@ const employees = [
     id: 2,
     email: "tanu@kaamwali.com",
     password: "123",
+    username: "tanu",
     tasks: [
       {
         active: true,
@@ -57,6 +59,7 @@ const employees = [
     id: 3,
     email: "prashant@jangir.com",
     password: "123",
+    username: "prashant",
     tasks: [
       {
         active: false,
@@ -84,6 +87,7 @@ const employees = [
     id: 4,
     email: "kartikey@sharma.com",
     password: "123",
+    username: "kartikey",
     tasks: [
       {
         active: true,
@@ -111,6 +115,7 @@ const employees = [
     id: 5,
     email: "aditi@singh.com",
     password: "123",
+    username: "aditi",
     tasks: [
       {
         active: false,
@@ -141,8 +146,10 @@ const admin = [
     id: 1,
     email: "sanchit@singh.com",
     password: "123",
+    username: "sanchit",
   },
 ];
+
 
 export const setLocalStorage = () => {
   localStorage.setItem("employees", JSON.stringify(employees));
