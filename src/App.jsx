@@ -7,9 +7,6 @@ import { setLocalStorage } from "./utils/LocalStorage";
 import { AuthProvider } from "./context/AuthContext";
 
 function App() {
-  // useEffect(() => {
-  //   setLocalStorage()
-  // },)
 
  const [user, setUser] = useState(() => {
   const savedUser = localStorage.getItem("loggedInUser");
@@ -50,7 +47,7 @@ function App() {
       {!user ? (
         <Login handleLogin={handleLogin} />
       ) : user == "admin" ? (
-        <AdminDashboard />
+        <AdminDashboard  />
       ) : (
         <EmployeeDashboard />
       )}
