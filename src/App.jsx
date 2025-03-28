@@ -13,11 +13,9 @@ function App() {
   });
 
   const [loggedInUser, setLoggedInUser] = useState();
-  const [isLogin, setIsLogin] = useState(false);
 
   const data = useContext(AuthProvider);
   if (!data) {
-    console.log("Context not available yet...");
     return null; 
   }
 

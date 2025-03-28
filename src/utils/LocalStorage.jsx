@@ -26,6 +26,12 @@ const employees = [
         category: "Inventory",
       },
     ],
+    taskNumber: {
+      active: 1,
+      new_task: 1,
+      completed: 1,
+      failed: 0,
+    },
   },
   {
     id: 2,
@@ -54,6 +60,12 @@ const employees = [
         category: "Finance",
       },
     ],
+    taskNumber: {
+      active: 1,
+      new_task: 0,
+      completed: 1,
+      failed: 0,
+    },
   },
   {
     id: 3,
@@ -82,6 +94,12 @@ const employees = [
         category: "IT",
       },
     ],
+    taskNumber: {
+      active: 1,
+      new_task: 1,
+      completed: 1,
+      failed: 0,
+    },
   },
   {
     id: 4,
@@ -110,6 +128,12 @@ const employees = [
         category: "Content",
       },
     ],
+    taskNumber: {
+      active: 1,
+      new_task: 1,
+      completed: 1,
+      failed: 0,
+    },
   },
   {
     id: 5,
@@ -138,8 +162,15 @@ const employees = [
         category: "Development",
       },
     ],
+    taskNumber: {
+      active: 1,
+      new_task: 1,
+      completed: 0,
+      failed: 1,
+    },
   },
 ];
+
 
 const admin = [
   {

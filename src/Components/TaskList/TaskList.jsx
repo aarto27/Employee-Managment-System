@@ -1,30 +1,19 @@
 import React from "react";
+import AcceptTask from "./AcceptTask";
+import CompleteTask from "./CompleteTask";
+import FailedTask from "./FailedTask";
+import NewTask from "./NewTask";
 
 const TaskList = ({data}) => {
 
-  console.log(data);
+
   return (
     <div id="tasklist" className="TaskList">
-      <div className="TaskList-Item">
-        <div className="TaskList-Header">
-          <h3>High</h3>
-          <h4>20 feb 2024</h4>
-        </div>
-        {/* <h2> {data.tasks?.[0].task_title}</h2> */}
-        <p>
-          {/* {data.tasks?.task_description} */}
-        </p>
-      </div>
-      <div className="TaskList-Item">
-        <div className="TaskList-Header">
-          <h3>High</h3>
-          <h4>20 feb 2024</h4>
-        </div>
-        {/* <h2> {data.tasks?.task_title}</h2> */}
-        <p>
-        {/* {data.tasks?.task_description} */}
-        </p>
-      </div>
+     {data.tasks.map((elem) =>{
+      if(elem.active){
+        return <AcceptTask />
+      }
+     })}
     </div>
   );
 };
