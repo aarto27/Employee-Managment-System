@@ -7,7 +7,6 @@ const Header = ({data}) => {
     window.location.reload()
   }
 
- 
   return (
     <div className='Header'>
         <h1>

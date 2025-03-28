@@ -6,7 +6,6 @@ import TaskList from '../TaskList/TaskList'
 
 
 const EmployeeDashboard = ({data}) => {
-  
   return (
     <div className='EmployeeDB'>
         <Header data = {data}/>

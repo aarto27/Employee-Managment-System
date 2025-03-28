@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState , useContext } from "react";
 import "./App.css";
 import Login from "./Components/Auth/Login.jsx";
 import EmployeeDashboard from "./Components/Dashboard/EmployeeDashboard";
@@ -8,6 +8,7 @@ import { AuthProvider } from "./context/AuthContext";
 function App() {
   const [user, setUser] = useState(() => {
     const savedUser = localStorage.getItem("loggedInUser");
+   
     return savedUser ? JSON.parse(savedUser).role : null;
   });
 
@@ -34,7 +35,7 @@ function App() {
       if (employee) {
         setUser("employee");
         setLoggedInUser(employee);
-        localStorage.setItem("loggedInUser", JSON.stringify(employee));
+        localStorage.setItem("loggedInUser", JSON.stringify({  role: "employee" ,...employee}));
         return;
       }
     }
