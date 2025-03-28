@@ -3,50 +3,51 @@ import "./App.css";
 import Login from "./Components/Auth/Login.jsx";
 import EmployeeDashboard from "./Components/Dashboard/EmployeeDashboard";
 import AdminDashboard from "./Components/Dashboard/AdminDashboard";
-import { setLocalStorage } from "./utils/LocalStorage";
 import { AuthProvider } from "./context/AuthContext";
 
 function App() {
+  const [user, setUser] = useState(() => {
+    const savedUser = localStorage.getItem("loggedInUser");
+    return savedUser ? JSON.parse(savedUser).role : null;
+  });
 
- const [user, setUser] = useState(() => {
-  const savedUser = localStorage.getItem("loggedInUser");
-  return savedUser ? JSON.parse(savedUser).role : null;
-});
+  const [loggedInUser, setLoggedInUser] = useState();
 
-  const [loggedInUser, setLoggedInUser] = useState(null);
+  const data = useContext(AuthProvider);
 
   const handleLogin = (email, password) => {
     if (data) {
       const admin = data.admin.find(
         (e) => e.email === email && e.password === password
       );
+
       if (admin) {
         localStorage.setItem("loggedInUser", JSON.stringify({ role: "admin" }));
         setUser("admin");
         return;
       }
+
       const employee = data.employee.find(
         (e) => e.email === email && e.password === password
       );
+
       if (employee) {
+        setUser("employee");
         setLoggedInUser(employee);
-        localStorage.setItem("loggedInUser",JSON.stringify({ role: "employee" }));
-          setUser("employee");
+        localStorage.setItem("loggedInUser", JSON.stringify(employee));
         return;
       }
     }
   };
 
-  const data = useContext(AuthProvider);
-
   return (
     <>
       {!user ? (
         <Login handleLogin={handleLogin} />
-      ) : user == "admin" ? (
-        <AdminDashboard  />
+      ) : user === "admin" ? (
+        <AdminDashboard />
       ) : (
-        <EmployeeDashboard  data ={loggedInUser}/>
+        <EmployeeDashboard data={loggedInUser} />
       )}
     </>
   );

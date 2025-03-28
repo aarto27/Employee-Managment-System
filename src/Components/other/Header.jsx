@@ -11,7 +11,7 @@ const Header = ({data}) => {
   return (
     <div className='Header'>
         <h1>
-            Hello <br /> <span className='Username'>{data} 👋</span>
+            Hello <br /> <span className='Username'>{data?.username} 👋</span>
         </h1>
         <button className='Logout-Btn' onClick={handleLogout}>Log out</button>
     </div>
