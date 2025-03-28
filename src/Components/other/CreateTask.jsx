@@ -1,6 +1,7 @@
 import React from "react";
 
-const CreateTask = () => {
+const CreateTask = ({data}) => {
+  console.log(data);
   return (
     <div>
       <div className="AdminDB-Form">

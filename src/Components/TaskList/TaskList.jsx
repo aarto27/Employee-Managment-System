@@ -2,7 +2,7 @@ import React from "react";
 
 const TaskList = ({data}) => {
 
-  
+  console.log(data);
   return (
     <div id="tasklist" className="TaskList">
       <div className="TaskList-Item">

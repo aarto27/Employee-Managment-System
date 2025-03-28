@@ -13,8 +13,13 @@ function App() {
   });
 
   const [loggedInUser, setLoggedInUser] = useState();
+  const [isLogin, setIsLogin] = useState(false);
 
   const data = useContext(AuthProvider);
+  if (!data) {
+    console.log("Context not available yet...");
+    return null; 
+  }
 
   const handleLogin = (email, password) => {
     if (data) {
@@ -23,7 +28,8 @@ function App() {
       );
 
       if (admin) {
-        localStorage.setItem("loggedInUser", JSON.stringify({ role: "admin" }));
+        localStorage.setItem("loggedInUser", JSON.stringify({ role: "admin", ...admin }));
+        setLoggedInUser(admin)
         setUser("admin");
         return;
       }
@@ -46,7 +52,7 @@ function App() {
       {!user ? (
         <Login handleLogin={handleLogin} />
       ) : user === "admin" ? (
-        <AdminDashboard />
+        <AdminDashboard  data={loggedInUser} />
       ) : (
         <EmployeeDashboard data={loggedInUser} />
       )}
