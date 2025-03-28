@@ -5,12 +5,12 @@ import TaskListNumber from '../other/TaskListNumber'
 import TaskList from '../TaskList/TaskList'
 
 
-const EmployeeDashboard = () => {
+const EmployeeDashboard = ({data}) => {
   return (
     <div className='EmployeeDB'>
-        <Header />
-        <TaskListNumber />
-        <TaskList />
+        <Header data = {data}/>
+        <TaskListNumber data = {data} />
+        <TaskList data = {data} />
     </div>
   )
 }

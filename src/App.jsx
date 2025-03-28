@@ -30,10 +30,7 @@ function App() {
       );
       if (employee) {
         setLoggedInUser(employee);
-        localStorage.setItem(
-          "loggedInUser",
-          JSON.stringify({ role: "employee" })
-          );
+        localStorage.setItem("loggedInUser",JSON.stringify({ role: "employee" }));
           setUser("employee");
         return;
       }
@@ -49,7 +46,7 @@ function App() {
       ) : user == "admin" ? (
         <AdminDashboard  />
       ) : (
-        <EmployeeDashboard />
+        <EmployeeDashboard  data ={loggedInUser}/>
       )}
     </>
   );
