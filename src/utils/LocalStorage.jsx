@@ -4,7 +4,7 @@ const employees = [
     email: "nikita@sharma.com",
     password: "123",
     username: "nikita",
-    tasks: [
+    task: [
       {
         active: true,
         new_task: true,
@@ -38,7 +38,7 @@ const employees = [
     email: "tanu@kaamwali.com",
     password: "123",
     username: "tanu",
-    tasks: [
+    task: [
       {
         active: true,
         new_task: false,
@@ -72,7 +72,7 @@ const employees = [
     email: "prashant@jangir.com",
     password: "123",
     username: "prashant",
-    tasks: [
+    task: [
       {
         active: false,
         new_task: false,
@@ -106,7 +106,7 @@ const employees = [
     email: "kartikey@sharma.com",
     password: "123",
     username: "kartikey",
-    tasks: [
+    task: [
       {
         active: true,
         new_task: true,
@@ -140,7 +140,7 @@ const employees = [
     email: "aditi@singh.com",
     password: "123",
     username: "aditi",
-    tasks: [
+    task: [
       {
         active: false,
         new_task: false,

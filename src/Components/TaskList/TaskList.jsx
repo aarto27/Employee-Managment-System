@@ -5,11 +5,14 @@ import FailedTask from "./FailedTask";
 import NewTask from "./NewTask";
 
 const TaskList = ({ data }) => {
+  console.log("TaskList===>",data?.task);
   return (
     <div id="tasklist" className="TaskList">
-      {data.tasks.map((elem, index) => {
+      {data?.task.map((elem, index) => {
         if (elem.active) {
-          return <AcceptTask key={index} task={elem} />; 
+          return <AcceptTask key={index} task={elem} />;
+        } else {
+          return null;
         }
       })}
     </div>

@@ -1,6 +1,7 @@
 import React from 'react'
 
-const AcceptTask = () => {
+const AcceptTask = ({data}) => {
+  console.log("AcceptTask===>",data?.task);
   return (
     <div>
          <div className="TaskList-Item">
@@ -8,7 +9,7 @@ const AcceptTask = () => {
           <h3>High</h3>
           <h4>20 feb 2024</h4>
         </div>
-        {/* <h2> {data.tasks?.[0].task_title}</h2> */}
+        {/* <h2> {data.task?.[0].task_title}</h2> */}
         <p>
           {/* {data.tasks?.task_description} */}
         </p>
