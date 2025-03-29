@@ -5,7 +5,7 @@ import FailedTask from "./FailedTask";
 import NewTask from "./NewTask";
 
 const TaskList = ({ data }) => {
-  console.log("TaskList===>",data?.task);
+  console.log("TaskList===>", data);
   return (
     <div id="tasklist" className="TaskList">
       {data?.task.map((elem, index) => {
