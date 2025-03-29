@@ -1,22 +1,22 @@
-import { useState , useContext } from "react";
+import { useState, useContext } from "react";
 import "./App.css";
 import Login from "./Components/Auth/Login.jsx";
 import EmployeeDashboard from "./Components/Dashboard/EmployeeDashboard";
 import AdminDashboard from "./Components/Dashboard/AdminDashboard";
-import { AuthProvider } from "./context/AuthContext";
+import { AuthContext } from "./context/AuthProvider"; // Use the context object, not the provider
 
 function App() {
   const [user, setUser] = useState(() => {
     const savedUser = localStorage.getItem("loggedInUser");
-   
+
     return savedUser ? JSON.parse(savedUser).role : null;
   });
 
   const [loggedInUser, setLoggedInUser] = useState();
 
-  const data = useContext(AuthProvider);
+  const data = useContext(AuthContext); 
   if (!data) {
-    return null; 
+    return null;
   }
 
   const handleLogin = (email, password) => {
@@ -27,7 +27,7 @@ function App() {
 
       if (admin) {
         localStorage.setItem("loggedInUser", JSON.stringify({ role: "admin", ...admin }));
-        setLoggedInUser(admin)
+        setLoggedInUser(admin);
         setUser("admin");
         return;
       }
@@ -39,7 +39,7 @@ function App() {
       if (employee) {
         setUser("employee");
         setLoggedInUser(employee);
-        localStorage.setItem("loggedInUser", JSON.stringify({  role: "employee" ,...employee}));
+        localStorage.setItem("loggedInUser", JSON.stringify({ role: "employee", ...employee }));
         return;
       }
     }
@@ -50,7 +50,7 @@ function App() {
       {!user ? (
         <Login handleLogin={handleLogin} />
       ) : user === "admin" ? (
-        <AdminDashboard  data={loggedInUser} />
+        <AdminDashboard data={loggedInUser} />
       ) : (
         <EmployeeDashboard data={loggedInUser} />
       )}
