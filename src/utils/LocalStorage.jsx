@@ -16,7 +16,7 @@ const employees = [
         category: "Reporting",
       },
       {
-        active: true,
+        active: false,
         new_task: false,
         completed: true,
         failed: false,

@@ -14,7 +14,7 @@ const TaskList = ({ data }) => {
         } else {
           return null;
         }
-      })}
+      })};
     </div>
   );
 };
