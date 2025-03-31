@@ -11,10 +11,14 @@ const TaskList = ({ data }) => {
       {data?.task.map((elem, index) => {
         if (elem.active) {
           return <AcceptTask key={index} task={elem} />;
-        } else {
-          return null;
+        } else if (elem.completed) {
+          return <CompleteTask key={index} task={elem} />;
+        } else if (elem.failed) {
+          return <FailedTask key={index} task={elem} />;
+        } else if (elem.new_task) {
+          return <NewTask key={index} task={elem} />;
         }
-      })};
+      })}
     </div>
   );
 };

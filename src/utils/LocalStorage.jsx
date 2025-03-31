@@ -171,7 +171,6 @@ const employees = [
   },
 ];
 
-
 const admin = [
   {
     id: 1,
@@ -180,7 +179,6 @@ const admin = [
     username: "sanchit",
   },
 ];
-
 
 export const setLocalStorage = () => {
   localStorage.setItem("employees", JSON.stringify(employees));
