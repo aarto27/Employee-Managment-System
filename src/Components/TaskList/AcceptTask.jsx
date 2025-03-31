@@ -1,6 +1,6 @@
 import React from 'react'
 
-const AcceptTask = ({key,task}) => {
+const AcceptTask = ({task}) => {
   return (
     <div>
          <div className="TaskList-Item">
