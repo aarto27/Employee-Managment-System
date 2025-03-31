@@ -23,13 +23,3 @@ Cypress.Commands.add('mount', mount)
 // Example use:
 // cy.mount(<MyComponent />)
 
-
-describe("Login Test", () => {
-    it("logs in successfully", () => {
-      cy.visit("http://localhost:3000"); 
-      cy.get("#email").type("sanchit@singh.com"); 
-      cy.get("#password").type("123");
-      cy.get("#login-btn").click(); 
-      cy.contains("Dashboard").should("be.visible"); 
-    });
-  });
