@@ -26,6 +26,7 @@ const Login = ({handleLogin}) => {
           <input
             type="email"
             name="email"
+            id="email"
             placeholder="Enter your Email"
             value={email}
             onChange={(e) => {
@@ -36,6 +37,7 @@ const Login = ({handleLogin}) => {
           <input
             type="password"
             name="password"
+            id="password"
             placeholder="Enter your Password"
             value={password}
             onChange={(e) => {
@@ -43,7 +45,7 @@ const Login = ({handleLogin}) => {
             }}
             required
           />
-          <button type="submit" className="Login-Btn">
+          <button type="submit" className="Login-Btn" id="login-btn">
             Login
           </button>
         </form>
