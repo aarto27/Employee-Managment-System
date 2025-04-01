@@ -30,9 +30,8 @@ const CreateTask = ({ data }) => {
       if (assign === elem.username) {  
         console.log("Assigning to:", elem.username);
         console.log("Previous Tasks:", elem.task);
-  
-       
         elem.task.push(task);
+        elem.taskNumber.newtask = elem.taskNumber.newtask +1
         console.log("Updated Tasks:", elem.task);
       }
     });

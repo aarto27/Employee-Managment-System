@@ -15,7 +15,7 @@ const AuthProvider = ({ children }) => { // Corrected component name
 
   return (
     <div>
-      <AuthContext.Provider value={userData}> // Corrected context usage
+      <AuthContext.Provider value={userData}> 
         {children}
       </AuthContext.Provider>
     </div>

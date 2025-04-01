@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import "./App.css";
 import Login from "./Components/Auth/Login.jsx";
 import EmployeeDashboard from "./Components/Dashboard/EmployeeDashboard";
@@ -15,6 +15,12 @@ function App() {
   const [loggedInUser, setLoggedInUser] = useState();
 
   const data = useContext(AuthContext); 
+
+  useEffect(()=>{
+    const loggedInUser = localStorage.getItem('loggedInUser')
+    console.log(loggedInUser);
+  },[])
+
   if (!data) {
     return null;
   }
