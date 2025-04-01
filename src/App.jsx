@@ -16,8 +16,7 @@ function App() {
   const data = useContext(AuthContext); 
 
   useEffect(()=>{
-    const loggedInUser = localStorage.getItem('loggedInUser')
-    console.log(loggedInUser);
+    const loggedInUser = localStorage.getItem('loggedInUser');
   },[])
 
   if (!data) {
@@ -49,7 +48,6 @@ function App() {
       }
     }
   };
-  console.log(user);
 
   return (
     <>
