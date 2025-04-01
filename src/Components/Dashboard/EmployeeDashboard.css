@@ -75,17 +75,6 @@ h3 {
     flex-wrap: nowrap; 
 }
 
-.TaskList-Item {
-    flex: 1; 
-    min-width: 300px; 
-    max-width: 350px; 
-    padding: 20px;
-    border-radius: 15px;
-    background-color: #ff7e7e;
-    height: 350px;
-    color: white;
-}
-
 .TaskList-Item h2{
     margin-bottom:20px ;
 }

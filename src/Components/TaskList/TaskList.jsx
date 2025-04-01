@@ -3,6 +3,7 @@ import AcceptTask from "./AcceptTask";
 import CompleteTask from "./CompleteTask";
 import FailedTask from "./FailedTask";
 import NewTask from "./NewTask";
+import './TaskList.css'
 
 const TaskList = ({ data }) => {
   console.log("TaskList===>", data);
@@ -15,7 +16,7 @@ const TaskList = ({ data }) => {
           return <CompleteTask key={index} task={elem} />;
         } else if (elem.failed) {
           return <FailedTask key={index} task={elem} />;
-        } else if (elem.new_task) {
+        } else if (elem.newtask) {
           return <NewTask key={index} task={elem} />;
         }
       })}

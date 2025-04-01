@@ -3,14 +3,14 @@ import React from 'react'
 const CompleteTask = ({task}) => {
   return (
     <div>
-         <div className="TaskList-Item">
+         <div className="CompletedTask">
         <div className="TaskList-Header">
-          <h3>High</h3>
-          <h4>20 feb 2024</h4>
+          <h3>{task.category}</h3>
+          <h4>{task.taskDate}</h4>
         </div>
-        <h2> {task.task_title}</h2>
+        <h2> {task.taskTitle}</h2>
         <p>
-          {task.task_description}
+          {task.taskDescription}
         </p>
         <div>
             <button className="complete-btn">Complete</button>

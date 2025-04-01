@@ -1,0 +1,43 @@
+.AcceptTask{
+    flex: 1; 
+    min-width: 300px; 
+    max-width: 350px; 
+    padding: 20px;
+    border-radius: 15px;
+    background-color: lightpink;
+    height: 350px;
+    color: white; 
+}
+
+.CompletedTask{
+    flex: 1; 
+    min-width: 300px; 
+    max-width: 350px; 
+    padding: 20px;
+    border-radius: 15px;
+    background-color: lightgreen;
+    height: 350px;
+    color: white;
+}
+
+.FailedTask{
+    flex: 1; 
+    min-width: 300px; 
+    max-width: 350px; 
+    padding: 20px;
+    border-radius: 15px;
+    background-color: gold;
+    height: 350px;
+    color: white;
+}
+
+.NewTask{
+    flex: 1; 
+    min-width: 300px; 
+    max-width: 350px; 
+    padding: 20px;
+    border-radius: 15px;
+    background-color: lightblue;
+    height: 350px;
+    color: white;
+}

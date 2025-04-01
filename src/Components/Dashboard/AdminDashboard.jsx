@@ -3,10 +3,11 @@ import './AdminDashboard.css'
 import Header from '../other/Header'
 import CreateTask from '../other/CreateTask'
 
-const AdminDashboard = ({savedUser}) => {
+const AdminDashboard = ({data}) => {
+  console.log(data);
   return (
     <div className='AdminDB'>
-        <Header  />
+        <Header admin={data} />
         <CreateTask />
     </div>
   )
