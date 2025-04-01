@@ -3,12 +3,11 @@ import "./App.css";
 import Login from "./Components/Auth/Login.jsx";
 import EmployeeDashboard from "./Components/Dashboard/EmployeeDashboard";
 import AdminDashboard from "./Components/Dashboard/AdminDashboard";
-import { AuthContext } from "./context/AuthProvider"; // Use the context object, not the provider
+import { AuthContext } from "./context/AuthProvider";
 
 function App() {
   const [user, setUser] = useState(() => {
     const savedUser = localStorage.getItem("loggedInUser");
-
     return savedUser ? JSON.parse(savedUser).role : null;
   });
 
@@ -32,7 +31,7 @@ function App() {
       );
 
       if (admin) {
-        localStorage.setItem("loggedInUser", JSON.stringify({ role: "admin", ...admin }));
+        localStorage.setItem("loggedInUser", JSON.stringify({ role: "admin"}));
         setLoggedInUser(admin);
         setUser("admin");
         return;
@@ -50,15 +49,16 @@ function App() {
       }
     }
   };
+  console.log(user);
 
   return (
     <>
       {!user ? (
         <Login handleLogin={handleLogin} />
       ) : user === "admin" ? (
-        <AdminDashboard data={loggedInUser} />
+        <AdminDashboard data={loggedInUser} setUser={setUser} />
       ) : (
-        <EmployeeDashboard data={loggedInUser} />
+        <EmployeeDashboard data={loggedInUser} setUser={setUser}/>
       )}
     </>
   );

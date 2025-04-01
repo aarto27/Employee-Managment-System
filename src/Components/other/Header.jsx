@@ -1,10 +1,12 @@
 import React from 'react'
 
-const Header = ({data,admin}) => {
+const Header = ({data,admin ,setUser}) => {
 
   const handleLogout = () =>{
-    localStorage.removeItem('loggedInUser')
-    window.location.reload()
+    localStorage.removeItem('loggedInUser');
+    setTimeout(() => {
+      setUser("");
+    }, 1000);
   }
 
   return (
