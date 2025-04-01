@@ -35,7 +35,7 @@ const Login = ({handleLogin}) => {
             required
           />
           <input
-            type="password"
+            type="password" 
             name="password"
             id="password"
             placeholder="Enter your Password"

@@ -12,42 +12,60 @@ function App() {
   });
 
   const [loggedInUser, setLoggedInUser] = useState();
+  const [isLoading, setIsLoading] = useState(true);
 
   const data = useContext(AuthContext); 
 
-  useEffect(()=>{
-    const loggedInUser = localStorage.getItem('loggedInUser');
-  },[])
+  useEffect(() => {
+    const savedUser = localStorage.getItem("loggedInUser");
+    if (savedUser) {
+      const parsedUser = JSON.parse(savedUser);
+      setUser(parsedUser.role);
+      setLoggedInUser(parsedUser);
+    }
+    setIsLoading(false); 
+  }, []);
 
   if (!data) {
     return null;
   }
 
   const handleLogin = (email, password) => {
-    if (data) {
-      const admin = data.admin.find(
-        (e) => e.email === email && e.password === password
-      );
+    setIsLoading(true); 
+    setTimeout(() => {  
+      if (data) {
+        const admin = data.admin.find(
+          (e) => e.email === email && e.password === password
+        );
 
-      if (admin) {
-        localStorage.setItem("loggedInUser", JSON.stringify({ role: "admin"}));
-        setLoggedInUser(admin);
-        setUser("admin");
-        return;
+        if (admin) {
+          localStorage.setItem("loggedInUser", JSON.stringify({ role: "admin", ...admin }));
+          setLoggedInUser(admin);
+          setUser("admin");
+        } else {
+          const employee = data.employee.find(
+            (e) => e.email === email && e.password === password
+          );
+
+          if (employee) {
+            localStorage.setItem("loggedInUser", JSON.stringify({ role: "employee", ...employee }));
+            setLoggedInUser(employee);
+            setUser("employee");
+          }
+        }
       }
-
-      const employee = data.employee.find(
-        (e) => e.email === email && e.password === password
-      );
-
-      if (employee) {
-        setUser("employee");
-        setLoggedInUser(employee);
-        localStorage.setItem("loggedInUser", JSON.stringify({ role: "employee", ...employee }));
-        return;
-      }
-    }
+      setIsLoading(false); 
+    }, 2000); 
   };
+
+
+  if (isLoading) {
+    return (
+      <div className="loader-container">
+        <div className="loader"></div>
+      </div>
+    ); 
+  }
 
   return (
     <>
