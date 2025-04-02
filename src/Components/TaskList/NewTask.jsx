@@ -6,13 +6,10 @@ const NewTask = () => {
 
   useEffect(() => {
     try {
-     
       const savedUser = JSON.parse(localStorage.getItem("loggedInUser"));
       if (savedUser) {
         setLoggedInUser(savedUser.username);
       }
-
-    
       const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
       setTasks(savedTasks);
     } catch (error) {
