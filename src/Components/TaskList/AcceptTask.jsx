@@ -1,29 +1,24 @@
-import {useState} from 'react'
-import { newTask } from '../other/CreateTask.jsx';  
+import { useState } from 'react';
 
-
-const AcceptTask = ({task}) => {
-  const taskList = newTask()
-  const [taskName, setTaskName] = useState(taskList);
+const AcceptTask = ({ task }) => {
+  const [taskName, setTaskName] = useState(task.taskTitle);
 
   return (
     <div>
-         <div className="AcceptTask">
+      <div className="AcceptTask">
         <div className="TaskList-Header">
           <h3>{task.category}</h3>
           <h4>{task.taskDate}</h4>
         </div>
-        <h2> {task.taskTitle}</h2>
-        <p>
-          {task.taskDescription}
-        </p>
+        <h2>{taskName}</h2>
+        <p>{task.taskDescription}</p>
         <div>
-            <button className="Mark-Comp">Mark as Complete</button>
-            <button className="Mark-Fail">Mark as Failed</button>
+          <button className="Mark-Comp" onClick={() => setTaskName('Completed')}>Mark as Complete</button>
+          <button className="Mark-Fail" onClick={() => setTaskName('Failed')}>Mark as Failed</button>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default AcceptTask
+export default AcceptTask;

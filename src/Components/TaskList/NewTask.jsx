@@ -1,19 +1,34 @@
 import { useState, useEffect } from "react";
 
 const NewTask = () => {
-  const [tasks, setTasks] = useState([]); 
+  const [tasks, setTasks] = useState([]);
+  const [loggedInUser, setLoggedInUser] = useState(null);
 
   useEffect(() => {
-    const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
-    setTasks(savedTasks);
-    console.log(savedTasks);
+    try {
+     
+      const savedUser = JSON.parse(localStorage.getItem("loggedInUser"));
+      if (savedUser) {
+        setLoggedInUser(savedUser.username);
+      }
+
+    
+      const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+      setTasks(savedTasks);
+    } catch (error) {
+      console.error("Failed to parse data from localStorage", error);
+      setTasks([]);
+    }
   }, []);
 
 
+  const assignedTasks = tasks.filter((task) => task?.assign === loggedInUser);
+
+
   return (
-    <div>
-      {tasks.length > 0 ? (
-        tasks.map((task, index) => (
+    <div className="newtask">
+      {assignedTasks.length > 0 ? (
+        assignedTasks.map((task, index) => (
           <div key={index} className="NewTask">
             <div className="TaskList-Header">
               <h3>{task?.category || "No Category"}</h3>
@@ -27,7 +42,7 @@ const NewTask = () => {
           </div>
         ))
       ) : (
-        <p>No tasks available</p>
+        <p>No tasks assigned to you.</p>
       )}
     </div>
   );

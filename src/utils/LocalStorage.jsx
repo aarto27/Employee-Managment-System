@@ -41,7 +41,7 @@ const employees = [
     task: [
       {
         active: true,
-        newtask: false,
+        newtask: true,
         completed: false,
         failed: false,
         taskTitle: "Client Meeting",
@@ -78,7 +78,7 @@ const employees = [
         newtask: false,
         completed: true,
         failed: false,
-        taskDitle: "Team Training",
+        taskTitle: "Team Training",
         taskDescription: "Conduct training session for new employees",
         taskDate: "2025-03-24",
         category: "Training",
