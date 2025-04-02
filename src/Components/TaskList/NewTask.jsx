@@ -6,9 +6,9 @@ const NewTask = () => {
   useEffect(() => {
     const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
     setTasks(savedTasks);
+    console.log(savedTasks);
   }, []);
 
-  console.log(tasks);
 
   return (
     <div>
