@@ -22,7 +22,7 @@ function App() {
       const parsedUser = JSON.parse(savedUser);
       setUser(parsedUser.role);
       setLoggedInUser(parsedUser);
-    }
+    } 
     setIsLoading(false); 
   }, []);
 

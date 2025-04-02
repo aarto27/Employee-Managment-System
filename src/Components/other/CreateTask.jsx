@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-const CreateTask = ({ data }) => {
-  console.log(data);
+const CreateTask = () => {
+
 
   const [taskTitle, setTaskTitle] = useState("");
   const [taskDescription, setTaskDescription] = useState("");
