@@ -1,6 +1,11 @@
-import React from 'react'
+import {useState} from 'react'
+import { newTask } from '../other/CreateTask.jsx';  
+
 
 const AcceptTask = ({task}) => {
+  const taskList = newTask()
+  const [taskName, setTaskName] = useState(taskList);
+
   return (
     <div>
          <div className="AcceptTask">

@@ -1,41 +1,72 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+export const newTask = (
+  taskTitle,
+  taskDescription,
+  assign,
+  taskDate,
+  category
+) => {
+  return {
+    taskTitle,
+    taskDescription,
+    assign,
+    taskDate,
+    category,
+    newtask: true,
+    active: false,
+    failed: false,
+    completed: false,
+  };
+};
 
 const CreateTask = () => {
-
-
   const [taskTitle, setTaskTitle] = useState("");
   const [taskDescription, setTaskDescription] = useState("");
   const [taskDate, setTaskDate] = useState("");
   const [category, setCategory] = useState("");
   const [assign, setAssign] = useState("");
+  const [employees, setEmployees] = useState([]);
 
-  const [task, setTask] = useState({});
+  useEffect(() => {
+    const savedEmployees = JSON.parse(localStorage.getItem("employees")) || [];
+    setEmployees(savedEmployees);
+    console.log(savedEmployees);
+  }, []);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    setTask({
+
+    const taskData = newTask(
       taskTitle,
       taskDescription,
       assign,
       taskDate,
-      category,
-      newtask: true,
-      active: false,
-      failed: false,
-      completed: false,
-    });
-    const data = JSON.parse(localStorage.getItem('employees'))
-    console.log(data);
-    data.forEach((elem) => {
-      if (assign === elem.username) {  
-        console.log("Assigning to:", elem.username);
-        console.log("Previous Tasks:", elem.task);
-        elem.task.push(task);
-        elem.taskNumber.newtask = elem.taskNumber.newtask +1
-        console.log("Updated Tasks:", elem.task);
+      category
+    );
+
+    const updatedEmployees = employees.map((employee) => {
+      if (employee.username === assign) {
+        return {
+          ...employee,
+          task: [...(employee.task || []), taskData],
+          taskNumber: {
+            ...employee.taskNumber,
+            newtask: (employee.taskNumber.newtask || 0) + 1,
+          },
+        };
       }
+      return employee;
     });
-    localStorage.setItem("employees", JSON.stringify(data));
+
+    localStorage.setItem("employees", JSON.stringify(updatedEmployees));
+
+    const allTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    localStorage.setItem("tasks", JSON.stringify([...allTasks, taskData]));
+
+    setEmployees(updatedEmployees);
+
+    console.log(updatedEmployees);
 
     setTimeout(() => {
       setTaskTitle("");
@@ -46,57 +77,42 @@ const CreateTask = () => {
     }, 1000);
   };
 
+ 
   return (
     <div>
       <div className="AdminDB-Form">
-        <form
-          onSubmit={(e) => {
-            submitHandler(e);
-          }}
-        >
+        <form onSubmit={submitHandler}>
           <h3>Task Title</h3>
           <input
             value={taskTitle}
-            onChange={(e) => {
-              setTaskTitle(e.target.value);
-            }}
+            onChange={(e) => setTaskTitle(e.target.value)}
             type="text"
-            placeholder="Make a UI desgin"
+            placeholder="Make a UI design"
           />
           <h3>Description</h3>
           <textarea
             value={taskDescription}
-            onChange={(e) => {
-              setTaskDescription(e.target.value);
-            }}
-            name=""
-            id=""
+            onChange={(e) => setTaskDescription(e.target.value)}
             cols="30"
             rows="10"
           ></textarea>
           <h3>Date</h3>
           <input
             value={taskDate}
-            onChange={(e) => {
-              setTaskDate(e.target.value);
-            }}
+            onChange={(e) => setTaskDate(e.target.value)}
             type="date"
           />
-          <h3>Asign</h3>
+          <h3>Assign</h3>
           <input
             value={assign}
-            onChange={(e) => {
-              setAssign(e.target.value);
-            }}
+            onChange={(e) => setAssign(e.target.value)}
             type="text"
-            placeholder=" Name of Employee"
+            placeholder="Name of Employee"
           />
           <h3>Category</h3>
           <input
             value={category}
-            onChange={(e) => {
-              setCategory(e.target.value);
-            }}
+            onChange={(e) => setCategory(e.target.value)}
             type="text"
           />
           <br />

@@ -6,7 +6,7 @@ import TaskList from '../TaskList/TaskList'
 
 
 const EmployeeDashboard = ({data , setUser}) => {
-  console.log("EmployeeDashboard====>", data);
+ 
   return (
     <div className='EmployeeDB'>
         <Header data = {data} setUser={setUser}/>

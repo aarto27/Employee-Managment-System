@@ -1,7 +1,7 @@
 import React from "react";
 
 const TaskListNumber = ({data}) => {
-  console.log("TaskListNumber=====>",data);
+ 
   return (
     <div className="TaskListNumber">
       <div className="TLN-Item" style={{ backgroundColor: "lightpink" }}>
